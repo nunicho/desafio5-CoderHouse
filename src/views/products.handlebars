@@ -1,4 +1,4 @@
-<h4>Página de productos:</h4>
+<h1>Página de productos:</h1>
 
 {{#unless isFirst}}
   <a href="/?index={{subtract index 1}}">Anterior</a>
@@ -9,12 +9,12 @@
 
 <hr />
 
-<h5>{{product.title}}</h5>
+<h3>{{product.title}}</h3>
 <ul>
-  <li>Descripción: {{product.description}}</li>
-  <li>Precio: {{product.price}}</li>
-  <li>Código: {{product.code}}</li>
-   <li>Stock: {{product.stock}} unidades</li>
+  <li><strong>Descripción:</strong>{{product.description}}</li>
+  <li><strong>Precio: </strong> {{product.price}}</li>
+  <li><strong>Código: </strong> {{product.code}}</li>
+   <li><strong>Stock:  </strong>{{product.stock}} unidades</li>
 </ul>
 
 <img
