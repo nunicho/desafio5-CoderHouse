@@ -22,12 +22,12 @@
   {
     "id": 3,
     "status": true,
-    "title": "Ventilador",
+    "title": "Tender para la ropa",
     "description": "Pie aluminio plegable",
     "price": 21000,
     "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_685663-MLU69658396260_052023-O.webp",
     "code": "TA-1",
-    "stock": 9
+    "stock": 9  
   },
   {
     "id": 4,

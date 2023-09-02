@@ -1,0 +1,28 @@
+<h4>Página de productos:</h4>
+
+{{#unless isFirst}}
+  <a href="/?index={{subtract index 1}}">Anterior</a>
+{{/unless}}
+{{#unless isLast}}
+  <a href="/?index={{add index 1}}">Siguiente</a>
+{{/unless}}
+
+<hr />
+
+<h5>{{product.title}}</h5>
+<ul>
+  <li>Descripción: {{product.description}}</li>
+  <li>Precio: {{product.price}}</li>
+  <li>Código: {{product.code}}</li>
+   <li>Stock: {{product.stock}} unidades</li>
+</ul>
+
+<img
+  src="{{product.thumbnail}}"
+  height="auto"
+  width="300"
+  title="{{product.title}}"
+  style="border: 2px solid red; margin: 10px;"
+  alt="Descripción de la imagen"
+  loading="lazy"
+/>
