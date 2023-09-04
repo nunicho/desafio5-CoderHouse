@@ -56,7 +56,7 @@ router.get("/realtimeproducts", (req, res) => {
     product: product,
     index: index,
     titlePage: "Página de productos en tiempo real",
-    estilo: "productsStyles.css",
+    estilo: "realTimeProducts.css",
   });
 });
 
