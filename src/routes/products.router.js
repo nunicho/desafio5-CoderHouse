@@ -81,7 +81,7 @@ router.post("/", async (req, res) => {
       stock,
     };
 
-    productos.push(nuevoProducto);
+    productos.push(nuevoProducto);   
 
     try {
       await fs.promises.writeFile(

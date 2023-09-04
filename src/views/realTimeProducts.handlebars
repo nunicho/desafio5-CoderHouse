@@ -7,10 +7,14 @@
   <p id="temperatura"></p>
 </div>
 
-<!-- Botón para mostrar la ventana modal del formulario de agregar producto agregar producto-->
+<div>
+  <p id="ultimoProductoAgregado">No se ha agregado ningún producto en esta sesión</p>
+</div>
+
+<!-- Botón para mostrar la ventana modal del formulario de AGREGAR PRODUCTO -->
 <button id="agregarProducto">Agregar Producto</button>
 
-<!-- Ventana modal -->
+<!-- Ventana modal para AGREGAR PRODUCTOS -->
 <div id="modal" class="modal">
   <div class="modal-scrollable-content">
     <span class="close" id="cerrarModal">&times;</span>
@@ -39,44 +43,13 @@
 </div>
 
 <hr />
+
 <div>
-  <ul id="realTimeProducts"></ul>
+  <ul id="realTimeProductsList"></ul>
 </div>
 
 <script src="socket.io/socket.io.js"></script>
 <script src="assets/scripts/home.js"></script>
 <script src="assets/scripts/modalAddProduct.js"></script>
+<script type="module" src="assets/scripts/print.js"></script> 
 
-{{!-- <span><a  href="/">Regresar</a></span> <span><button id="printButton">Imprimir Producto</button></span>
-<br/>
-<h1>{{titlePage}}</h1>
-
-{{#unless isFirst}}
-  <a style="margin: 15px" href="/products?index={{subtract index 1}}">Anterior</a>
-{{/unless}}
-{{#unless isLast}}
-  <a style="margin: 15px"  href="/products?index={{add index 1}}">Siguiente</a>
-{{/unless}}
-
-<hr />
-
-<h3>{{product.title}}</h3>
-<ul>
-  <li><strong>Descripción:</strong>{{product.description}}</li>
-  <li><strong>Precio: </strong> {{product.price}}</li>
-  <li><strong>Código: </strong> {{product.code}}</li>
-   <li><strong>Stock:  </strong>{{product.stock}} unidades</li>
-</ul>
-
-<img
-  src="{{product.thumbnail}}"
-  height="auto"
-  width="300"
-  title="{{product.title}}"
-  style="border: 2px solid red; margin: 10px;"
-  alt="Descripción de la imagen"
-  loading="lazy"
-/>
-
-
- <script type="module" src="assets/scripts/print.js"></scrip>  --}}

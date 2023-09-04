@@ -2,6 +2,8 @@ const express = require('express')
 const productsRouter = require('./routes/products.router.js');
 const cartsRouter = require('./routes/carts.router.js')
 const vistasRouter = require("./routes/vistas.router.js");
+const path = require("path"); // Importa el módulo 'path'
+const fs = require("fs"); // Importa el módulo 'fs'
 
 const http = require("http"); // Importa el módulo http para crear el servidor HTTP.
 const socketIO = require("socket.io");
@@ -37,6 +39,9 @@ const hbs = handlebars.create({
 
 
 
+
+
+
 app.engine('handlebars', hbs.engine)
 app.set('views', __dirname + '/views')
 app.set('view engine', 'handlebars')
@@ -52,15 +57,30 @@ console.log(`Server escuchando en puerto ${PORT}`);
 const serverSocket = socketIO(serverExpress);
 
 serverSocket.on('connection', socket=>{
-  console.log(`Se ha conectado un cliente con un id ${socket.id}`)
-
-  socket.emit('bienvenida', {message:'Bienvenido al server...!!! Por favor identifíquese'})
-  socket.on('identificacion', nombre=>{
-    console.log(`se ha conectado ${nombre}`)
-    socket.emit('idCorrecto', {message:`Hola  ${nombre}, bienvenido`})
-    socket.broadcast.emit('nuevoUsuario', nombre)
-  })
   
+  //console.log(`Se ha conectado un cliente con un id ${socket.id}`)
+
+  socket.on("productoAgregado", (data) => {
+    console.log(`Se ha agregado ${data.title}`);
+    serverSocket.emit("productoAgregado", data); // Emitir el evento a todos los clientes
+  });
+
+  function getProducts() {
+    const ruta = path.join(__dirname, "archivos", "productos.json");
+    if (fs.existsSync(ruta)) {
+      return JSON.parse(fs.readFileSync(ruta, "utf-8"));
+    } else {
+      return [];
+    }
+  }
+
+    socket.emit("productosActualizados", getProducts());
+  // socket.emit('bienvenida', {message:'Bienvenido al server...!!! Por favor identifíquese'})
+  // socket.on('identificacion', nombre=>{
+  //   console.log(`se ha conectado ${nombre}`)
+  //   socket.emit('idCorrecto', {message:`Hola  ${nombre}, bienvenido`})
+  //   socket.broadcast.emit('nuevoUsuario', nombre)
+  // })
 })
 setInterval(()=>{
   let temperatura = Math.floor(Math.random()*(4)+27)
