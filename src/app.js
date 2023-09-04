@@ -37,11 +37,6 @@ const hbs = handlebars.create({
   },
 });
 
-
-
-
-
-
 app.engine('handlebars', hbs.engine)
 app.set('views', __dirname + '/views')
 app.set('view engine', 'handlebars')
@@ -57,12 +52,10 @@ console.log(`Server escuchando en puerto ${PORT}`);
 const serverSocket = socketIO(serverExpress);
 
 serverSocket.on('connection', socket=>{
-  
-  //console.log(`Se ha conectado un cliente con un id ${socket.id}`)
 
   socket.on("productoAgregado", (data) => {
     console.log(`Se ha agregado ${data.title}`);
-    serverSocket.emit("productoAgregado", data); // Emitir el evento a todos los clientes
+    serverSocket.emit("productoAgregado", data); 
   });
 
   function getProducts() {
@@ -74,13 +67,29 @@ serverSocket.on('connection', socket=>{
     }
   }
 
-    socket.emit("productosActualizados", getProducts());
-  // socket.emit('bienvenida', {message:'Bienvenido al server...!!! Por favor identifíquese'})
-  // socket.on('identificacion', nombre=>{
-  //   console.log(`se ha conectado ${nombre}`)
-  //   socket.emit('idCorrecto', {message:`Hola  ${nombre}, bienvenido`})
-  //   socket.broadcast.emit('nuevoUsuario', nombre)
-  // })
+ socket.on("eliminarProducto", (productId) => {
+   const productos = getProducts();
+
+   function saveProducts(products) {
+     const ruta = path.join(__dirname, "archivos", "productos.json");
+
+     try {
+       fs.writeFileSync(ruta, JSON.stringify(products, null, 2), "utf8");
+     } catch (error) {
+       console.error("Error al guardar productos:", error);    
+     }
+   }
+   const productoIndex = productos.findIndex(
+     (producto) => producto.id === productId
+   );
+   if (productoIndex !== -1) {
+     productos.splice(productoIndex, 1);
+     saveProducts(productos);
+     serverSocket.emit("productosActualizados", productos);
+   }
+ }); 
+
+  socket.emit("productosActualizados", getProducts());
 })
 setInterval(()=>{
   let temperatura = Math.floor(Math.random()*(4)+27)
