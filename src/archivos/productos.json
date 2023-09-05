@@ -70,13 +70,33 @@
           "stock": "40"
      },
      {
-          "id": 16,
+          "id": 17,
           "status": true,
-          "title": "PRODUCTO 1",
-          "description": "es para el agua",
-          "price": "125",
-          "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_758483-MLA47006749310_082021-V.webp",
-          "code": "TA-1801",
-          "stock": "123"
+          "title": "Cadena",
+          "description": "es de acero",
+          "price": "14000",
+          "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_2X_993887-MLA27295441179_052018-F.webp",
+          "code": "TA-1810",
+          "stock": "12"
+     },
+     {
+          "id": 18,
+          "status": true,
+          "title": "Morsa de banco giratoria",
+          "description": "Yunque 3 pulgadas",
+          "price": "27000",
+          "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_2X_752192-MLA44221553314_122020-F.webp",
+          "code": "tx-56",
+          "stock": "1"
+     },
+     {
+          "id": 19,
+          "status": true,
+          "title": "Pico Albañil",
+          "description": "76mm con cabo",
+          "price": "19000",
+          "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_2X_905796-MLA51314544240_082022-F.webp",
+          "code": "tx-57",
+          "stock": "2"
      }
 ]

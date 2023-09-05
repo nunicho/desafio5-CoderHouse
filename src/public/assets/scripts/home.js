@@ -52,17 +52,3 @@ function actualizarListaProductos(productos) {
 
 
 
-socket.on('nuevaTemperatura', (temperatura, fecha)=>{
-    console.log(`${fecha} temperatura asciende a ${temperatura}°` )
-    let pTemperatura = document.getElementById('temperatura')
-    pTemperatura.innerHTML = `La temperatura es de ${temperatura} °`;
-})
-
-socket.on("productoAgregado", (nuevoProducto) => {
-  // Obtén el nombre del nuevo producto
-  const nuevoProductoNombre = nuevoProducto.title; // Asegúrate de que esta propiedad sea correcta
-
-  // Actualiza el contenido del párrafo 'ultimoProductoAgregado'
-  let pAgregado = document.getElementById("ultimoProductoAgregado");
-  pAgregado.innerHTML = `El último producto agregado es: ${nuevoProductoNombre}`;
-});

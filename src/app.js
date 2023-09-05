@@ -91,8 +91,4 @@ serverSocket.on('connection', socket=>{
 
   socket.emit("productosActualizados", getProducts());
 })
-setInterval(()=>{
-  let temperatura = Math.floor(Math.random()*(4)+27)
-serverSocket.emit("nuevaTemperatura", temperatura, new Date().toUTCString());
-},3000)
 
